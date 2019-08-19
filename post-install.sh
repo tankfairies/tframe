@@ -1,7 +1,3 @@
 #!/bin/bash
 
-mkdir bill
-
-if [!-d $PWD/bob]; then
-    mkdir -p $PWD/bob;
-fi;
+cp -r vendor/tankfairies/tframe/src/public public
