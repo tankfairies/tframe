@@ -38,6 +38,9 @@
   },
   "scripts": {
     "post-package-install": [
+      "@installer"
+    ],
+    "installer": [
       "Tankfairies\\Tframe\\Installer::postPackageInstall"
     ]
   }
