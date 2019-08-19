@@ -37,10 +37,7 @@
     "sort-packages": true
   },
   "scripts": {
-    "post-package-install": [
-      "@installer"
-    ],
-    "installer": [
+    "post-install-cmd": [
       "bash post-install.sh"
     ]
   }
