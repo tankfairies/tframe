@@ -8,7 +8,8 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Model\Service;
+namespace Tankfairies\Tframe\Model\ConfigManager;
+
 use Exception;
 
 /**
@@ -16,7 +17,7 @@ use Exception;
  *
  * Extends the base exceptions class.
  */
-class ApiConnException extends Exception
+class ConfigException extends Exception
 {
 
     /**

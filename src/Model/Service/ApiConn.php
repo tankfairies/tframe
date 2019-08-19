@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Model\Service;
+namespace Tankfairies\Tframe\Model\Service;
 
 /**
  * Curl API wrapper

@@ -17,7 +17,14 @@
   },
   "prefer-stable": true,
   "require": {
-    "php": "^7.3"
+    "php": "^7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tankfairies\\Tframe\\": "src/"
+    }
+  },
+  "autoload-dev": {
   },
   "require-dev": {
   },
@@ -27,5 +34,10 @@
     },
     "optimize-autoloader": true,
     "sort-packages": true
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "Tankfairies\\Tframe\\Installer::postCreateProjectCmd"
+    ]
   }
 }

@@ -8,9 +8,9 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Model\Service;
+namespace Tankfairies\Tframe\Model\Service;
 
-use Tankfairies\Model\ConfigManager\ConfigManager;
+use Tankfairies\Tframe\Model\ConfigManager\ConfigManager;
 
 /**
  * Class DBConn

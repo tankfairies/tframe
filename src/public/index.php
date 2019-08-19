@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-require_once('../model/Autoloader.php');
+require_once('../Model/Autoloader.php');
 
 spl_autoload_register('\Tankfairies\Model\Autoloader::autoload');
 $dispatch = new \Tankfairies\Model\Dispatcher();

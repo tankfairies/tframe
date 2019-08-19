@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Model\ConfigManager;
+namespace Tankfairies\Tframe\Model\ConfigManager;
 
 /**
  * config Manager
@@ -34,11 +34,11 @@ class ConfigManager
         self::$handler = new ConfigHandler();
 
         //add master config
-        self::$handler->addConfiguration(require_once(__DIR__.'/../../Config/global.php'));
+        self::$handler->addConfiguration(require_once(__DIR__ . '/../../Config/global.php'));
 
         //add developer config
         if (file_exists("Configs/dev.php")) {
-            self::$handler->addConfiguration(require_once(__DIR__.'/../../Config/dev.php'));
+            self::$handler->addConfiguration(require_once(__DIR__ . '/../../Config/dev.php'));
         }
     }
 

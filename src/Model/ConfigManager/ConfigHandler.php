@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Model\ConfigManager;
+namespace Tankfairies\Tframe\Model\ConfigManager;
 
 /**
  * Array Handler

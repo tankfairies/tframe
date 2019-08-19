@@ -9,6 +9,8 @@ A simple MVC framework with available Curl and SQLite and caching wrappers.
 
 ## Installation
 
+Currently in development
+
 ## Usage
 
 ## Copyright and license
