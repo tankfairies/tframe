@@ -38,7 +38,7 @@
   },
   "scripts": {
     "post-package-install": [
-      "Tankfairies\\Tframe\\Installer::postCreateProjectCmd"
+      "Tankfairies\\Tframe\\Installer::postPackageInstall"
     ]
   }
 }
