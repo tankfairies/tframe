@@ -38,7 +38,10 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "bash post-install.sh"
+      "@installer"
+    ],
+    "installer": [
+      "cp -r vendor/tankfairies/tframe/src/dist/public public"
     ]
   }
 }
