@@ -37,7 +37,7 @@
     "sort-packages": true
   },
   "scripts": {
-    "post-create-project-cmd": [
+    "post-package-install": [
       "Tankfairies\\Tframe\\Installer::postCreateProjectCmd"
     ]
   }
