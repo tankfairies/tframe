@@ -41,7 +41,7 @@
       "@installer"
     ],
     "installer": [
-      "Tankfairies\\Tframe\\Installer::postPackageInstall"
+      "bash post-install.sh"
     ]
   }
 }
