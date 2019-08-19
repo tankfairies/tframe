@@ -16,6 +16,7 @@
     "issues": "https://github.com/tankfairies/tframe/issues"
   },
   "prefer-stable": true,
+  "minimum-stability": "dev",
   "require": {
     "php": "^7.2"
   },
