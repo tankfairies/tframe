@@ -12,24 +12,13 @@ namespace Tankfairies\Controller;
 
 use Tankfairies\Model\Controller;
 
-/**
- * Class IndexController
- *
- * @package Tankfairies\Controller
- */
 class IndexController extends Controller
 {
-    /**
-     *
-     */
     public function index()
     {
         $this->render("index");
     }
 
-    /**
-     *
-     */
     public function info()
     {
         phpinfo();

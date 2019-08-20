@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Tframe\Model;
+namespace Tankfairies\Model;
 
 /**
  * Class Autoloader
@@ -41,7 +41,7 @@ class Autoloader
             $fileName .= $processedClassName . '.php';
 
             for ($i = 0, $count = count(self::$autoloadedDirectories); $i < $count; $i++) {
-                $candidate = __DIR__ . "/src/";
+                $candidate = __DIR__ . "/../" . "/{$fileName}";
 
                 if (stream_resolve_include_path($candidate)) {
                     self::includeFile($candidate);

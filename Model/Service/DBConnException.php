@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Tframe\Model\Service;
+namespace Tankfairies\Model\Service;
 
 use Exception;
 /**

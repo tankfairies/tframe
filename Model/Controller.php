@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Tframe\Model;
+namespace Tankfairies\Model;
 
 /**
  * Class Controller
@@ -32,7 +32,7 @@ class Controller
         extract($params);
 
         ob_start();
-        require_once(__DIR__ . "/../view/" . $filename . '.php');
+        require_once(__DIR__."/../view/" . str_replace(['Tankfairies', 'Controller', '\\'], '', get_class($this)) . '/' . $filename . '.php');
         $page = ob_get_clean();
 
         require_once("../view/{$this->layout}.php");

@@ -8,13 +8,12 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Tframe\Model\Cache;
+namespace Tankfairies\Model\Cache;
 
-use Tankfairies\Tframe\Model\Service\DBConn;
+use Tankfairies\Model\Service\DBConn;
 
 /**
  * Class Cache
- *
  * @package Model\Cache
  */
 class Cache

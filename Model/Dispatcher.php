@@ -8,7 +8,7 @@
  * @see https://github.com/tankfairies/tframe
  */
 
-namespace Tankfairies\Tframe\Model;
+namespace Tankfairies\Model;
 
 /**
  * Class Dispatcher
