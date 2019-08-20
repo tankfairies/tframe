@@ -46,6 +46,9 @@
     "post-root-package-install": [
       "@installerc"
     ],
+    "post-create-project-cmd": [
+      "php -r \"copy('vendor/tankfairies/tframe/src/dist/public', 'public');\""
+    ],
     "installera": [
       "echo here a",
       "cp -r vendor/tankfairies/tframe/src/dist/public public"
