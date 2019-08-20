@@ -20,11 +20,6 @@
   "require": {
     "php": "^7.2"
   },
-  "autoload": {
-    "psr-4": {
-      "Tankfairies\\Tframe\\": "src/"
-    }
-  },
   "autoload-dev": {
   },
   "require-dev": {
@@ -35,31 +30,5 @@
     },
     "optimize-autoloader": true,
     "sort-packages": true
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "@installera"
-    ],
-    "post-package-install": [
-      "@installerb"
-    ],
-    "post-root-package-install": [
-      "@installerc"
-    ],
-    "post-create-project-cmd": [
-      "php -r \"copy('vendor/tankfairies/tframe/src/dist/public', 'public');\""
-    ],
-    "installera": [
-      "echo here a",
-      "cp -r vendor/tankfairies/tframe/src/dist/public public"
-    ],
-    "installerb": [
-      "echo here b",
-      "cp -r vendor/tankfairies/tframe/src/dist/public public"
-    ],
-    "installerc": [
-      "echo here c",
-      "cp -r vendor/tankfairies/tframe/src/dist/public public"
-    ]
   }
 }

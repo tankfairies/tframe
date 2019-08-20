@@ -41,7 +41,7 @@ class Autoloader
             $fileName .= $processedClassName . '.php';
 
             for ($i = 0, $count = count(self::$autoloadedDirectories); $i < $count; $i++) {
-                $candidate = __DIR__ . "/../";
+                $candidate = __DIR__ . "/src/";
 
                 if (stream_resolve_include_path($candidate)) {
                     self::includeFile($candidate);
