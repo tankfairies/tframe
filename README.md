@@ -1,5 +1,3 @@
-[![License](https://poser.pugx.org/tankfairies/tframe/license)](https://packagist.org/packages/tankfairies/tframe)
-
 # TFrame
 A simple MVC framework with available Curl and SQLite and caching wrappers.
 
