@@ -32,7 +32,7 @@ class Dispatcher
     private $params = [];
 
     /**
-     *
+     * Calls the controller and associated action
      */
     public function dispatch()
     {
@@ -48,6 +48,8 @@ class Dispatcher
     }
 
     /**
+     * Loads the controller defined from the url
+     *
      * @return mixed
      */
     public function loadController()
@@ -59,6 +61,8 @@ class Dispatcher
     }
 
     /**
+     * Converts the url into controller, action and parameters
+     *
      * @param $url
      */
     public function parse($url)

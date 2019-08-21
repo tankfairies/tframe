@@ -10,5 +10,4 @@
 require_once('../model/Autoloader.php');
 
 spl_autoload_register('\Tankfairies\Model\Autoloader::autoload');
-$dispatch = new \Tankfairies\Model\Dispatcher();
-$dispatch->dispatch();
+(new \Tankfairies\Model\Dispatcher())->dispatch();
