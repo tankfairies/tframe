@@ -20,9 +20,8 @@ class ConfigManager
     /**
      * Adds the Global configuration and applies the dev configuration over the top
      *
-     * @var string
      */
-    public static $handler = '';
+    public static ConfigHandler $handler;
 
     /**
      * Gets and adds the configurations

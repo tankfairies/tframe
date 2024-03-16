@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/index/info">Phpinfo <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/index/info">PHPInfo <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/index/cache">DB cache example <span class="sr-only">(current)</span></a>

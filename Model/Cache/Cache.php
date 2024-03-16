@@ -88,7 +88,7 @@ class Cache
         $this->clearOldData();
     }
 
-    private function clearOldData()
+    private function clearOldData(): void
     {
         $statement = $this->dbCache->prepare(
             "DELETE FROM cache WHERE ttl < strftime('%s', 'now')"

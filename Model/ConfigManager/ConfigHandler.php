@@ -49,16 +49,11 @@ class ConfigHandler
     /**
      * Add a configuration
      *
-     * @param $config
+     * @param array $config
      * @return $this
-     * @throws ConfigException
      */
-    public function addConfiguration($config): self
+    public function addConfiguration(array $config): self
     {
-        if (!is_array($config)) {
-            throw new ConfigException('config must be an array');
-        }
-
         $this->configurations[] = $config;
 
         $this->configCount = count($this->configurations);
@@ -69,10 +64,10 @@ class ConfigHandler
      * Returns the merged configuration
      *
      * @param string $section
-     * @return mixed
+     * @return array|string
      * @throws ConfigException
      */
-    public function getConfig(string $section = '')
+    public function getConfig(string $section = ''): array|string
     {
         if ($this->configCount == 0) {
             throw new ConfigException('no configs set');
@@ -106,11 +101,11 @@ class ConfigHandler
     /**
      * Merges configuration array
      *
-     * @param $first
-     * @param $second
+     * @param array $first
+     * @param array $second
      * @return array
      */
-    private function mergeArray($first, $second): array
+    private function mergeArray(array $first, array $second): array
     {
         $inter = array_intersect_assoc(array_keys($first), array_keys($second));
 

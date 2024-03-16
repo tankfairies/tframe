@@ -20,14 +20,14 @@ class Autoloader
     /**
      * @var array
      */
-    private static $autoloadedDirectories = ['controller', 'model'];
+    private static array $autoloadedDirectories = ['controller', 'model'];
 
     /**
      * Autoloader for class files in core.
      *
      * @param $className
      */
-    public static function autoload($className)
+    public static function autoload($className): void
     {
         if (!class_exists($className, false)) {
             $processedClassName = str_replace('Tankfairies', '', $className);

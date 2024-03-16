@@ -64,8 +64,6 @@ class Dispatcher
      */
     public function loadController(): object
     {
-        $name = "Tankfairies\\Controller\\{$this->controller}Controller";
-
         return new ($this->getClass());
     }
 

@@ -18,10 +18,10 @@ namespace Tankfairies\Model\Service;
  */
 class ApiConn
 {
-    const RETRIES = 15;
+    const int RETRIES = 15;
 
-    private $url;
-    private $params = [];
+    private string $url;
+    private array $params = [];
     private $ch;
 
     /**
@@ -30,7 +30,7 @@ class ApiConn
      * @param string $url
      * @return ApiConn
      */
-    public function setUrl(string $url): ApiConn
+    public function setUrl(string $url): self
     {
         $this->url = $url;
         return $this;
@@ -42,7 +42,7 @@ class ApiConn
      * @param array $params
      * @return ApiConn
      */
-    public function setParams(array $params): ApiConn
+    public function setParams(array $params): self
     {
         $this->params = $params;
         return $this;
