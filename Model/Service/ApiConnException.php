@@ -9,6 +9,7 @@
  */
 
 namespace Tankfairies\Model\Service;
+
 use Exception;
 
 /**
@@ -24,9 +25,9 @@ class ApiConnException extends Exception
      *
      * @param string $message
      * @param integer $code
-     * @param Exception $previous
+     * @param Exception|null $previous
      */
-    public function __construct($message, $code = 0, Exception $previous = null)
+    public function __construct(string $message, int $code = 0, Exception $previous = null)
     {
         // make sure everything is assigned properly
         parent::__construct($message, $code, $previous);

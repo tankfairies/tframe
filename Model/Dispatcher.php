@@ -10,6 +10,8 @@
 
 namespace Tankfairies\Model;
 
+use Exception;
+
 /**
  * Class Dispatcher
  * @package Model
@@ -17,47 +19,54 @@ namespace Tankfairies\Model;
 class Dispatcher
 {
     /**
-     * @var
+     * @var string
      */
-    private $controller;
+    private string $controller;
 
     /**
-     * @var
+     * @var string
      */
-    private $action;
+    private string $action;
 
     /**
      * @var array
      */
-    private $params = [];
+    private array $params = [];
 
     /**
      * Calls the controller and associated action
      */
-    public function dispatch()
+    public function dispatch(): void
     {
-        $this->parse($_SERVER["REQUEST_URI"]);
+        try {
+            $this->parse($_SERVER["REQUEST_URI"]);
 
-        call_user_func_array(
-            [
-                $this->loadController(),
-                $this->action
-            ],
-            $this->params
-        );
+            if (!method_exists($this->getClass(), $this->action)) {
+                throw new Exception("Controller or action ({$this->getClass()} {$this->action}) doesn't exist");
+            }
+
+            call_user_func_array(
+                [
+                    $this->loadController(),
+                    $this->action
+                ],
+                $this->params
+            );
+        } catch (Exception $exception) {
+            echo $exception->getMessage();
+        }
     }
 
     /**
      * Loads the controller defined from the url
      *
-     * @return mixed
+     * @return object
      */
-    public function loadController()
+    public function loadController(): object
     {
         $name = "Tankfairies\\Controller\\{$this->controller}Controller";
 
-        $controller = new $name();
-        return $controller;
+        return new ($this->getClass());
     }
 
     /**
@@ -65,7 +74,7 @@ class Dispatcher
      *
      * @param $url
      */
-    public function parse($url)
+    public function parse($url): void
     {
         $url = trim($url);
         if ($url == '/') {
@@ -81,6 +90,10 @@ class Dispatcher
             }
             $this->params = array_slice($splitUrl, 3);
         }
+    }
 
+    private function getClass(): string
+    {
+        return "Tankfairies\\Controller\\{$this->controller}Controller";
     }
 }

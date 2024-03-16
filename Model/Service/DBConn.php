@@ -10,21 +10,23 @@
 
 namespace Tankfairies\Model\Service;
 
+use Tankfairies\Model\ConfigManager\ConfigException;
 use Tankfairies\Model\ConfigManager\ConfigManager;
+use SQLite3;
 
 /**
  * Class DBConn
  * @package Model\Service
  */
-class DBConn extends \SQLite3
+class DBConn extends SQLite3
 {
     /**
      * DBConn constructor.
-     * @throw ConfigException
+     * @throws ConfigException
      */
-      function __construct() {
-          $config = ConfigManager::getConfiguration();
-          $this->open('../storage/'.$config->getConfig('cacheDB'));
-      }
-
+    public function __construct()
+    {
+        $config = ConfigManager::getConfiguration();
+        $this->open('../storage/'.$config->getConfig('cacheDB'));
+    }
 }

@@ -11,6 +11,7 @@
 namespace Tankfairies\Model\Cache;
 
 use Tankfairies\Model\Service\DBConn;
+use Exception;
 
 /**
  * Class Cache
@@ -21,7 +22,7 @@ class Cache
     /**
      * @var DBConn
      */
-    private $dbCache;
+    private DBConn $dbCache;
 
     /**
      * Cache constructor.
@@ -30,63 +31,68 @@ class Cache
     {
         $this->dbCache = new DBConn();
         $statement = $this->dbCache->prepare(
-    "create table if not exists cache
+            "create table if not exists cache
             (
                 id text not null constraint cache_pk primary key,
                 data text not null,
                 ttl  int  not null
             );"
         );
-        $result = $statement->execute();
+        $statement->execute();
     }
 
     /**
      * Checks and returns the cache data if available.
      *
-     * @param $id
-     * @return array
+     * @param string $id
+     * @return string
      */
-    public function check($id)
+    public function check(string $id): string
     {
         try {
-            $statement = $this->dbCache->prepare("SELECT data FROM cache WHERE id = :id AND ttl > strftime('%s', 'now')");
+            $this->clearOldData();
+
+            $statement = $this->dbCache->prepare(
+                "SELECT data FROM cache WHERE id = :id AND ttl > strftime('%s', 'now')"
+            );
             $statement->bindParam('id', $id);
             $result = $statement->execute();
-            return $result->fetchArray();
-        } catch (\Exception $exception) {
-            return [];
-        }
-    }
 
-    /**
-     * Retrieves the cache data is store.
-     *
-     * @param $id
-     * @return array
-     */
-    public function fallback($id)
-    {
-        $statement = $this->dbCache->prepare("SELECT data FROM cache WHERE id = :id");
-        $statement->bindParam('id', $id);
-        $result = $statement->execute();
-        return $result->fetchArray();
+            if (!$data = $result->fetchArray()) {
+                throw new Exception();
+            }
+
+            return $data[0];
+        } catch (Exception $exception) {
+            return '';
+        }
     }
 
     /**
      * Updates the cache.
      *
-     * @param $id
-     * @param $data
+     * @param string $id
+     * @param string $data
+     * @param int $seconds
      */
-    public function update($id, $data)
+    public function upsert(string $id, string $data, int $seconds = 5): void
     {
-        $json = json_encode($data);
-        $ttl = time()+5;
+        $ttl = time()+$seconds;
 
-        $statement = $this->dbCache->prepare("REPLACE INTO cache(id, data, ttl) VALUES (:id, :json, :ttl);");
+        $statement = $this->dbCache->prepare("REPLACE INTO cache(id, data, ttl) VALUES (:id, :data, :ttl);");
         $statement->bindParam('id', $id);
-        $statement->bindParam('json', $json);
+        $statement->bindParam('data', $data);
         $statement->bindParam('ttl', $ttl);
+        $statement->execute();
+
+        $this->clearOldData();
+    }
+
+    private function clearOldData()
+    {
+        $statement = $this->dbCache->prepare(
+            "DELETE FROM cache WHERE ttl < strftime('%s', 'now')"
+        );
         $statement->execute();
     }
 }

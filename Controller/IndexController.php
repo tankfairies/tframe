@@ -10,13 +10,29 @@
 
 namespace Tankfairies\Controller;
 
+use Tankfairies\Model\Cache\Cache;
 use Tankfairies\Model\Controller;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        $this->render("index");
+        $this->render("index", ['indexdata' => 'example param']);
+    }
+
+    public function cache()
+    {
+        $cache = new Cache();
+
+        $cacheData = $cache->check('some_data');
+
+        if (empty($cacheData)) {
+            $cacheData = 'no data';
+        }
+
+        $cache->upsert('some_data', "data stored for 5 seconds", 5);
+
+        $this->render("cache", ['cacheData' => $cacheData??'']);
     }
 
     public function info()

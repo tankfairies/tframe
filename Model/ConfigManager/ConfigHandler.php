@@ -22,22 +22,22 @@ class ConfigHandler
     /**
      * @var array
      */
-    private $configurations = [];
+    private array $configurations = [];
 
     /**
      * @var array
      */
-    private $mergedConfiguration = [];
+    private array $mergedConfiguration = [];
 
     /**
      * @var int
      */
-    private $configCount = 0;
+    private int $configCount = 0;
 
     /**
      * @var int
      */
-    private $mergedCount = 0;
+    private int $mergedCount = 0;
 
     /**
      *
@@ -53,13 +53,13 @@ class ConfigHandler
      * @return $this
      * @throws ConfigException
      */
-    public function addConfiguration($config): ConfigHandler
+    public function addConfiguration($config): self
     {
         if (!is_array($config)) {
             throw new ConfigException('config must be an array');
         }
 
-        array_push($this->configurations, $config);
+        $this->configurations[] = $config;
 
         $this->configCount = count($this->configurations);
         return $this;
@@ -72,7 +72,7 @@ class ConfigHandler
      * @return mixed
      * @throws ConfigException
      */
-    public function getConfig($section = '')
+    public function getConfig(string $section = '')
     {
         if ($this->configCount == 0) {
             throw new ConfigException('no configs set');
