@@ -14,7 +14,7 @@ To setup it up run: -
 Docker has been added to allow an easy way to test nad play with it.
 
 
-Add `1270.0.1 phpfpm.local` to the local hosts file on your computer
+Add `127.0.0.1 phpfpm.local` to the local hosts file on your computer
 
 Then run `docker-compose up`
 
